@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Machine Services - Gobinda Mondal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container" id="app">
+    <header class="header">
+      <h1>Machine Services</h1>
+      <p class="sub">Built by Gobinda Mondal</p>
+    </header>
+
+    <!-- AUTH / PIN SCREEN -->
+    <section id="auth-screen" class="card auth-card">
+      <div class="auth-icon">🔒</div>
+      <h2>Secure Login</h2>
+      <form id="pin-form" autocomplete="off">
+        <label for="pin-input" class="visually-hidden">PIN</label>
+        <input id="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="Enter 4-6 digit PIN" required />
+        <div class="row">
+          <button type="submit" class="btn primary">Unlock ATM</button>
+          <button type="button" id="reset-btn" class="btn outline">Reset App</button>
+        </div>
+      </form>
+      <p class="hint">Default PIN: <strong>1234</strong></p>
+      <p id="auth-msg" class="msg"></p>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="hidden" aria-hidden="true">
+      <div class="dashboard-header">
+        <h2>Welcome to ATM</h2>
+        <button id="logout-btn" class="btn outline small-btn">Logout</button>
+      </div>
+
+      <!-- Simulated Credit Card -->
+      <div class="balance-card premium-card">
+        <div class="card-chip"></div>
+        <div class="card-content">
+          <div class="label">Available Balance</div>
+          <div id="balance" class="balance">₹0.00</div>
+        </div>
+        <div class="quick-actions">
+          <button data-amount="500" class="btn glass">₹500</button>
+          <button data-amount="1000" class="btn glass">₹1k</button>
+          <button data-amount="2000" class="btn glass">₹2k</button>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel card">
+          <h3>Withdraw Funds</h3>
+          <form id="withdraw-form">
+            <input id="withdraw-amount" type="number" min="1" placeholder="Amount to withdraw" required />
+            <button type="submit" class="btn primary full-width">Withdraw</button>
+          </form>
+        </div>
+
+        <div class="panel card">
+          <h3>Deposit Funds</h3>
+          <form id="deposit-form">
+            <input id="deposit-amount" type="number" min="1" placeholder="Amount to deposit" required />
+            <button type="submit" class="btn secondary full-width">Deposit</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="panel card">
+          <h3>Security Options</h3>
+          <form id="change-pin-form" autocomplete="off">
+            <input id="old-pin" type="password" inputmode="numeric" maxlength="6" placeholder="Current PIN" required />
+            <input id="new-pin" type="password" inputmode="numeric" maxlength="6" placeholder="New PIN" required />
+            <button type="submit" class="btn outline full-width">Change PIN</button>
+          </form>
+        </div>
+
+        <div class="panel card">
+          <div class="history-header">
+            <h3>Recent Transactions</h3>
+            <button id="clear-history" class="btn text-btn" title="Clear transaction history">Clear</button>
+          </div>
+          <div id="history" class="history" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <p id="dash-msg" class="msg center-msg"></p>
+    </section>
+
+    <footer class="footer">
+      <small>Local demo simulation — Not connected to a real bank</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
